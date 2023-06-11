@@ -1,0 +1,78 @@
+plugins {
+	id 'com.unascribed.nilgradle' version '1.4.1'
+}
+
+// You can change this to be higher if you like. NilLoader itself is compiled
+// for Java 8 for compatibility with older versions.
+sourceCompatibility = 8
+targetCompatibility = 8
+
+group = 'hellfall'
+archivesBaseName = 'ears head fix'
+version = '1.0'
+
+repositories {
+	maven {
+		// NilLoader and NilGradle are published here
+		url 'https://repo.sleeping.town'
+		content {
+			includeGroup 'com.unascribed'
+		}
+	}
+	maven {
+		// If you wish to use Yarn or Intermediary
+		url 'https://maven.fabricmc.net'
+		content {
+			includeGroup 'net.fabricmc'
+		}
+	}
+	maven {
+		// If you wish to use mcp_config or compile against Minecraft Forge
+		url 'https://maven.minecraftforge.net'
+		content {
+			includeGroup 'net.minecraftforge'
+			includeGroup 'de.oceanlabs.mcp'
+		}
+		metadataSources {
+			artifact()
+		}
+	}
+}
+
+nil {
+	id "earsheadfix"
+	// Set this to false for a smaller JAR that can't be run as a standalone Java agent
+	standalone true
+}
+
+dependencies {
+	loader 'com.unascribed:nilloader:1.3.2'
+
+	game nil.minecraft('1.7.10', 'client')
+
+	mod 'net.minecraftforge:forge:1.7.10-10.13.4.1614-1.7.10:universal'
+
+}
+
+mappings {
+	work nil.mcpArchive('1.7.10', '908')
+	target nil.mcpArchiveSrg('1.7.10', '908')
+}
+
+tasks.register('runMc') {
+	group("custom")
+	dependsOn(build)
+	doLast {
+		copy {
+			from("build/libs") {
+				include("*.jar")
+			}
+			into("/home/jade/.local/share/multimc/instances/ear test/.minecraft/nilmods")
+		}
+		exec {
+//			workingDir("/home/jade/.local/share/multimc/instances/upsilon/minecraft/")
+			commandLine("prismlauncher", "-l", "ear test", "-a", "TheLastKumqwat")
+		}
+	}
+}
+
