@@ -37,7 +37,7 @@ public @interface Config {
 
     /**
      * Specifies the default boolean styling.
-     * Can be any value in {@link hexpaws.libzero.zeroconfig.ZeroConfig.BoolStyle}
+     * Can be any value in {@link hellfall.zeroconfig.ZeroConfig.BoolStyle}
      * Optional, defaults to TRUE_FALSE
      */
     @Target(ElementType.TYPE)
@@ -91,7 +91,7 @@ public @interface Config {
 
     /**
      * Specifies the boolean styling for the value.
-     * Can be any value in {@link hexpaws.libzero.zeroconfig.ZeroConfig.BoolStyle}
+     * Can be any value in {@link hellfall.zeroconfig.ZeroConfig.BoolStyle}
      * Optional, defaults to the default styling.
      * @see DefaultBoolStyle
      */

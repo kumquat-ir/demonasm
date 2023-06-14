@@ -22,6 +22,7 @@ public class GuiModListTransformer extends MiniTransformer {
 		);
 	}
 
+	@SuppressWarnings("unused")
 	public static class Hooks {
 		
 		public static void addNilmods(GuiModList modList) {
