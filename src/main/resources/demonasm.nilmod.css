@@ -1,0 +1,10 @@
+@nilmod {
+	name: "Demon ASM";
+	description: "Various patches for 1.7.10";
+	authors: "fall";
+	version: "${version}";
+}
+
+entrypoints {
+	premain: "hellfall.demonasm.DAPremain";
+}

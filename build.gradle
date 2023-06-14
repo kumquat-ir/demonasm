@@ -8,7 +8,7 @@ sourceCompatibility = 8
 targetCompatibility = 8
 
 group = 'hellfall'
-archivesBaseName = 'ears head fix'
+archivesBaseName = 'demonasm'
 version = '1.0'
 
 repositories {
@@ -40,9 +40,9 @@ repositories {
 }
 
 nil {
-	id "earsheadfix"
+	id "demonasm"
 	// Set this to false for a smaller JAR that can't be run as a standalone Java agent
-	standalone true
+	standalone false
 }
 
 dependencies {

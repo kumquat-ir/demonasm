@@ -1,4 +1,4 @@
-package hellfall.earsheadfix;
+package hellfall.demonasm;
 
 import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;

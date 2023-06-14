@@ -1,11 +1,11 @@
-package hellfall.earsheadfix;
+package hellfall.demonasm;
 
 import nilloader.api.ClassTransformer;
 import nilloader.api.ModRemapper;
 import nilloader.api.NilLogger;
 
-public class EHFPremain implements Runnable {
-	public static final NilLogger log = NilLogger.get("ears head fix");
+public class DAPremain implements Runnable {
+	public static final NilLogger log = NilLogger.get("demonasm");
 	
 	@Override
 	public void run() {
