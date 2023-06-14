@@ -37,6 +37,24 @@ repositories {
 			artifact()
 		}
 	}
+	maven {
+		// GTNH maven
+		url 'http://jenkins.usrv.eu:8081/nexus/content/repositories/public/'
+		content {
+			includeGroup 'com.github.GTNewHorizons'
+		}
+		metadataSources {
+			ignoreGradleMetadataRedirection()
+			mavenPom()
+		}
+		allowInsecureProtocol = true
+	}
+	maven {
+		url "https://cursemaven.com"
+		content {
+			includeGroup "curse.maven"
+		}
+	}
 }
 
 nil {
@@ -51,6 +69,15 @@ dependencies {
 	game nil.minecraft('1.7.10', 'client')
 
 	mod 'net.minecraftforge:forge:1.7.10-10.13.4.1614-1.7.10:universal'
+
+	mod('com.github.GTNewHorizons:IguanaTweaksTConstruct:2.3.0:dev') {
+		transitive = false
+	}
+	mod('com.github.GTNewHorizons:BloodMagic:1.4.1') {
+		transitive = false
+	}
+	mod 'curse.maven:gregtech4-483827:4398634'
+	mod 'curse.maven:ruins-227873:2367311'
 
 }
 
