@@ -11,7 +11,7 @@ public class SigilSeerTransformer extends MiniTransformer {
     protected boolean modifyClassStructure(ClassNode clazz) {
         // is this the right way to do this? who knows, it works
         clazz.visit(clazz.version, clazz.access, clazz.name, clazz.signature, "WayofTime/alchemicalWizardry/common/items/sigil/SigilDivination", clazz.interfaces.toArray(new String[0]));
-        return super.modifyClassStructure(clazz);
+        return false;
     }
 
     @SuppressWarnings("deprecation")

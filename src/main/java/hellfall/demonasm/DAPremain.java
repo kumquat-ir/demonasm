@@ -37,8 +37,7 @@ public class DAPremain implements Runnable {
 
 		if (DAConfig.shutupGT) {
 			log.info("Silencing GT4 Oredict spam");
-			//TODO
-//			ClassTransformer.register(new GT_OreDictHandlerTransformer());
+			ClassTransformer.register(new GT_OreDictHandlerTransformer());
 		}
 
 		if (DAConfig.shutupRuins) {

@@ -25,8 +25,8 @@ public class DAConfig {
     @Config.Category("fixes")
     public static boolean fixHeadRendering = true;
 
-    @Config.Key("greggy_greg_kindly_stuff_a_sock_in_it")
-    @Config.Comment("Stop GT4 from yelling about Ore Prefixes in the log")
+    @Config.Key("greggy_greg_do_please_kindly_stuff_a_sock_in_it")
+    @Config.Comment("Stop GT4 from yelling about Oredicts in the log")
     @Config.Category("shutup")
     public static boolean shutupGT = true;
 
