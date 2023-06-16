@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -227,8 +228,30 @@ public class ZeroConfig {
      * Makes sure all values are correct in the current class loader
      * Call this from your config's static initializer
      */
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public static void crossClassloader(Class<?> cfg) {
-        //TODO grab this bullshit from upsilonfixes as well
+        if (cfg.getClassLoader() != ClassLoader.getSystemClassLoader()) {
+            log.debug("Copying static values from " + cfg.getSimpleName() + " to a new classloader");
+            try {
+                Class<?> original = Class.forName(cfg.getName(), true, ClassLoader.getSystemClassLoader());
+                for (Field f : original.getDeclaredFields()) {
+                    if (Modifier.isStatic(f.getModifiers())) {
+                        Field current = cfg.getDeclaredField(f.getName());
+                        if (f.getType() == String.class || f.getType() == boolean.class || f.getType() == int.class || f.getType() == double.class) {
+                            current.set(null, f.get(null));
+                        }
+                        else if (f.getType().isEnum()) {
+                            current.set(null, Enum.valueOf((Class)current.getType(), ((Enum<?>)f.get(null)).name()));
+                        }
+                        else {
+                            log.warn("Copying type " + f.getType().getSimpleName() + " is not implemented!");
+                        }
+                    }
+                }
+            } catch (Throwable t) {
+                throw new AssertionError(t);
+            }
+        }
     }
 
     private static String makeComment(String in, String prefix) {

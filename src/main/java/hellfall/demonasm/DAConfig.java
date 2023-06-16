@@ -34,4 +34,8 @@ public class DAConfig {
     @Config.Comment("Ruins can spam the log really hard sometimes, make it not")
     @Config.Category("shutup")
     public static boolean shutupRuins = true;
+
+    static {
+        ZeroConfig.crossClassloader(DAConfig.class);
+    }
 }
