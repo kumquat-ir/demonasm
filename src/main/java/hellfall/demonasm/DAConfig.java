@@ -19,6 +19,15 @@ public class DAConfig {
     @Config.Comment("Make the Blood Magic Seer Sigil a strict upgrade to the Divination Sigil")
     public static boolean fixSeerSigil = true;
 
+    @Config.Key("corporeaBookmarks")
+    @Config.Comment("Make Corporea requesting request the amount set in bookmarks if control+shift is held\n" +
+            "If the output of a recipe is requested, all ingredients with an amount will be requested instead")
+    public static boolean corporeaBookmarks = true;
+
+    @Config.Key("corporeaIncludeNoAmount")
+    @Config.Comment("Also request 1 of ingredients without an amount when requesting a bookmarked recipe")
+    public static boolean corporeaIncludeNoAmount = false;
+
     @Config.Key("headRenderingFix")
     @Config.Comment("Fix player head rendering with Ears installed\n" +
             "This will cause rendering issues when Ears is not installed")

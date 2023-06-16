@@ -35,6 +35,11 @@ public class DAPremain implements Runnable {
 			ClassTransformer.register(new SigilSeerTransformer());
 		}
 
+		if (DAConfig.corporeaBookmarks) {
+			log.info("Integrating Corporea with NEI bookmark sizes");
+			ClassTransformer.register(new NEIInputHandlerTransformer());
+		}
+
 		if (DAConfig.shutupGT) {
 			log.info("Silencing GT4 Oredict spam");
 			ClassTransformer.register(new GT_OreDictHandlerTransformer());
