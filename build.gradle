@@ -55,12 +55,19 @@ repositories {
 			includeGroup "curse.maven"
 		}
 	}
+	flatDir {
+		dirs 'mappings'
+		content {
+			includeGroup 'mappings'
+		}
+	}
 }
 
 nil {
 	id "demonasm"
 	// Set this to false for a smaller JAR that can't be run as a standalone Java agent
 	standalone false
+//	keepAllMappings()
 }
 
 dependencies {
@@ -73,7 +80,7 @@ dependencies {
 	mod('com.github.GTNewHorizons:IguanaTweaksTConstruct:2.3.0:dev') {
 		transitive = false
 	}
-	mod('com.github.GTNewHorizons:BloodMagic:1.4.1') {
+	mod('com.github.GTNewHorizons:BloodMagic:1.4.1:dev') {
 		transitive = false
 	}
 	mod 'curse.maven:gregtech4-483827:4398634'
@@ -82,8 +89,17 @@ dependencies {
 }
 
 mappings {
-	work nil.mcpArchive('1.7.10', '908')
-	target nil.mcpArchiveSrg('1.7.10', '908')
+//	work nil.mcpArchiveSrg('1.7.10', '908')
+//	target nil.mcpArchive('1.7.10', '908')
+//	work 'de.oceanlabs.mcp:mcp_stable:12-1.7.10@zip'
+	via 'mappings:notch-srg@srg'
+//	via 'mappings:notch-mcp@srg'
+	work 'mappings:srg-mcp@srg'
+//	altTarget 'mappings:notch-srg@srg'
+	altTarget 'mappings:srg-mcp@srg'
+//	altTarget 'mappings:mcp-srg@srg'
+//	altTarget 'mappings:mcp-notch@srg'
+//	altTarget 'mappings:notch-mcp@srg'
 }
 
 tasks.register('runMc') {
@@ -103,3 +119,8 @@ tasks.register('runMc') {
 	}
 }
 
+// god i hate obfuscation mappings
+processResources.from("mappings.json", {
+        into("META-INF/nil")
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+})

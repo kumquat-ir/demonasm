@@ -23,7 +23,7 @@ public class SigilSeerTransformer extends MiniTransformer {
         ctx.add(INVOKESPECIAL("WayofTime/alchemicalWizardry/common/items/sigil/SigilDivination", "<init>", "()V"));
     }
 
-    @Patch.Method("func_77659_a(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;")
+    @Patch.Method("onItemRightClick(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;")
     @Patch.Method.AffectsControlFlow
     public void patchRightClick(PatchContext ctx) {
         ctx.jumpToStart();
@@ -32,7 +32,7 @@ public class SigilSeerTransformer extends MiniTransformer {
                 ALOAD(1),
                 ALOAD(2),
                 ALOAD(3),
-                INVOKESPECIAL("WayofTime/alchemicalWizardry/common/items/sigil/SigilDivination", "func_77659_a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;"),
+                INVOKESPECIAL("WayofTime/alchemicalWizardry/common/items/sigil/SigilDivination", "onItemRightClick", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;"),
                 ARETURN()
         );
     }

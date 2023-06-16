@@ -13,7 +13,7 @@ public class DAPremain implements Runnable {
 	public void run() {
 		ZeroConfig.sync(DAConfig.class);
 
-		ModRemapper.setTargetMapping("org.archive.minecraftcoderpack.1.7.10-908");
+//		ModRemapper.setTargetMapping("srg-mcp");
 
 		if (DAConfig.addToModList) {
 			ForgeModListHacks.parseFrom(NilModList.getAll());
