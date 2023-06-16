@@ -20,7 +20,9 @@ public class ZeroConfig {
 
     /**
      * Synchronizes a config.
+     * <p>
      * Reads values from the config file (if it exists), then writes the config to disk.
+     * <p>
      * This means that the config file will always stay in sync with the fields of the config class.
      * @param cfg The class to synchronize.
      */
@@ -149,7 +151,7 @@ public class ZeroConfig {
                                 v = f.getDouble(null);
                             }
                             value = String.valueOf(v);
-                        } else if (Enum.class.isAssignableFrom(f.getType())) {
+                        } else if (f.getType().isEnum()) {
                             // warning: much bullshit here
                             @SuppressWarnings("rawtypes")
                             Class eType = f.getType();
@@ -225,8 +227,11 @@ public class ZeroConfig {
     }
 
     /**
-     * Makes sure all values are correct in the current class loader
+     * Makes sure all static values are correct in the current class loader
+     * <p>
      * Call this from your config's static initializer
+     * <p>
+     * Can also be called on anything else to migrate <code>String</code>, <code>boolean</code>, <code>int</code>, <code>double</code>, and <code>Enum</code> values
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static void crossClassloader(Class<?> cfg) {

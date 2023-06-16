@@ -2,7 +2,6 @@ package hellfall.demonasm;
 
 import hellfall.zeroconfig.ZeroConfig;
 import nilloader.api.ClassTransformer;
-import nilloader.api.ModRemapper;
 import nilloader.api.NilLogger;
 import nilloader.api.NilModList;
 
@@ -32,7 +31,7 @@ public class DAPremain implements Runnable {
 		}
 
 		if (DAConfig.removeIguanaSkullContainer) {
-			log.info("Making Iguana Tweaks skulls sane");
+			log.info("Making Iguana Tweaks skulls not return skeleton skulls");
 			ClassTransformer.register(new IguanaSkullTransformer());
 		}
 
