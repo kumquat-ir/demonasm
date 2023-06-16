@@ -23,6 +23,12 @@ public class DAPremain implements Runnable {
 		if (DAConfig.fixHeadRendering) {
 			log.info("Fixing player head rendering");
 			ClassTransformer.register(new TileEntitySkullRendererTransformer());
+			// botania overrides the renderer, fix it
+			ClassTransformer.register(new ModelSkullOverrideTransformer());
+			// gaia guardian uses player skin
+			ClassTransformer.register(new RenderDopplegangerTransformer());
+			// twilight forest giants use player skin
+			ClassTransformer.register(new RenderTFGiantTransformer());
 		}
 
 		if (DAConfig.removeIguanaSkullContainer) {

@@ -86,6 +86,9 @@ dependencies {
 	mod('com.github.GTNewHorizons:Botania:1.9.23-GTNH:dev') {
 		transitive = false
 	}
+	mod('com.github.GTNewHorizons:twilightforest:2.4.3:dev'){
+		transitive = false
+	}
 	mod 'com.github.GTNewHorizons:NotEnoughItems:2.3.54-GTNH:dev'
 	mod 'curse.maven:gregtech4-483827:4398634'
 	mod 'curse.maven:ruins-227873:2367311'

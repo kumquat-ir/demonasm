@@ -30,7 +30,8 @@ public class DAConfig {
 
     @Config.Key("headRenderingFix")
     @Config.Comment("Fix player head rendering with Ears installed\n" +
-            "This will cause rendering issues when Ears is not installed")
+            "This will cause rendering issues when Ears is not installed\n" +
+            "Also fixes rendering of some mobs that use the player skin")
     @Config.Category("fixes")
     public static boolean fixHeadRendering = true;
 
