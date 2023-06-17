@@ -76,6 +76,17 @@ public @interface Config {
     @Retention(RetentionPolicy.RUNTIME)
     @interface Comment {
         String value();
+
+        /**
+         * Whether the default value should be appended to the end of comments.
+         * Can be applied to both the entire config or a single value.
+         * Optional, defaults to false
+         */
+        @Target({ElementType.FIELD, ElementType.TYPE})
+        @Retention(RetentionPolicy.RUNTIME)
+        @interface AppendDefault {
+            boolean value();
+        }
     }
 
     /**

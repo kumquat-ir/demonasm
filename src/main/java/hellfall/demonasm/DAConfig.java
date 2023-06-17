@@ -6,6 +6,7 @@ import hellfall.zeroconfig.ZeroConfig;
 @Config.File("config/demonasm.css")
 @Config.DefaultBoolStyle(ZeroConfig.BoolStyle.ON_OFF)
 @Config.DefaultCategory("tweaks")
+@Config.Comment.AppendDefault(true)
 public class DAConfig {
     @Config.Key("addNilmods")
     @Config.Comment("Add Nilmods to the mod list")
@@ -41,7 +42,7 @@ public class DAConfig {
     public static boolean shutupGT = true;
 
     @Config.Key("quietRuins")
-    @Config.Comment("Ruins can spam the log really hard sometimes, make it not")
+    @Config.Comment("Ruins can spam the log really hard sometimes, make it not [NYI]")
     @Config.Category("shutup")
     public static boolean shutupRuins = true;
 

@@ -40,6 +40,11 @@ public class ZeroConfig {
             if (defaultBoolStyleAnno != null) {
                 defaultBoolStyle = defaultBoolStyleAnno.value();
             }
+            boolean appendDefaults = false;
+            Config.Comment.AppendDefault appendDefaultsAnno = cfg.getAnnotation(Config.Comment.AppendDefault.class);
+            if (appendDefaultsAnno != null) {
+                appendDefaults = appendDefaultsAnno.value();
+            }
 
             File cfgFile = new File(cfgFileName.value());
             log.debug("Loading {} from {}", cfgFile, cfg.getName());
@@ -64,10 +69,27 @@ public class ZeroConfig {
                             category = categoryAnno.value();
                         }
 
+                        BoolStyle boolStyle = defaultBoolStyle;
+                        Config.BoolStyle boolStyleAnno = f.getAnnotation(Config.BoolStyle.class);
+                        if (boolStyleAnno != null) {
+                            boolStyle = boolStyleAnno.value();
+                        }
+
                         String comment = null;
                         Config.Comment commentAnno = f.getAnnotation(Config.Comment.class);
                         if (commentAnno != null) {
                             comment = commentAnno.value();
+                        }
+
+                        Config.Comment.AppendDefault appendDefaultFieldAnno = f.getAnnotation(Config.Comment.AppendDefault.class);
+                        if ((appendDefaultFieldAnno != null && appendDefaultFieldAnno.value()) || (appendDefaultFieldAnno == null && appendDefaults)) {
+                            String defaultValue = f.getType() == boolean.class ? boolStyle.getString(f.getBoolean(null)) : f.get(null).toString();
+                            if (comment == null) {
+                                comment = "default: " + defaultValue;
+                            }
+                            else {
+                                comment = comment.concat("\ndefault: " + defaultValue);
+                            }
                         }
 
                         String value = null;
@@ -104,19 +126,7 @@ public class ZeroConfig {
                             else {
                                 v = f.getBoolean(null);
                             }
-                            BoolStyle boolStyle = defaultBoolStyle;
-                            Config.BoolStyle boolStyleAnno = f.getAnnotation(Config.BoolStyle.class);
-                            if (boolStyleAnno != null) {
-                                boolStyle = boolStyleAnno.value();
-                            }
-                            switch (boolStyle) {
-                                case TRUE_FALSE:
-                                    value = v ? "true" : "false";
-                                    break;
-                                case ON_OFF:
-                                    value = v ? "on" : "off";
-                                    break;
-                            }
+                            value = boolStyle.getString(v);
                         } else if (f.getType() == int.class) {
                             Optional<Integer> opt;
                             try {
@@ -283,6 +293,17 @@ public class ZeroConfig {
      */
     public enum BoolStyle {
         TRUE_FALSE,
-        ON_OFF
+        ON_OFF;
+
+        public String getString(boolean b) {
+            switch (this) {
+                case TRUE_FALSE:
+                    return b ? "true" : "false";
+                case ON_OFF:
+                    return b ? "on" : "off";
+                default:
+                    return "null";
+            }
+        }
     }
 }
