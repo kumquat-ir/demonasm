@@ -1,12 +1,12 @@
-package hellfall.demonasm;
+package hellfall.demonasm.transformers.bloodmagic;
 
+import hellfall.demonasm.transformers.DAMiniTransformer;
 import nilloader.api.lib.asm.tree.ClassNode;
-import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("WayofTime.alchemicalWizardry.common.items.sigil.SigilSeer")
-public class SigilSeerTransformer extends MiniTransformer {
+public class SigilSeerTransformer extends DAMiniTransformer {
     @Override
     protected boolean modifyClassStructure(ClassNode clazz) {
         // is this the right way to do this? who knows, it works

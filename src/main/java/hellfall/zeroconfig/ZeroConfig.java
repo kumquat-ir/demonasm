@@ -272,7 +272,7 @@ public class ZeroConfig {
     private static String makeComment(String in, String prefix) {
         return prefix + "/*\n" + prefix + " * " +
                 in.replace("\n", "\n" + prefix + " * ")
-                + "\n" + prefix + "*/\n";
+                + "\n" + prefix + " */\n";
     }
 
     private static class ConfigEntry {

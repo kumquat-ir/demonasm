@@ -1,11 +1,11 @@
-package hellfall.demonasm;
+package hellfall.demonasm.transformers.iguanatweaks;
 
-import nilloader.api.lib.mini.MiniTransformer;
+import hellfall.demonasm.transformers.DAMiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("iguanaman.iguanatweakstconstruct.mobheads.items.IguanaSkull")
-public class IguanaSkullTransformer extends MiniTransformer {
+public class IguanaSkullTransformer extends DAMiniTransformer {
     @Patch.Method("<init>()V")
     @Patch.Method.AffectsControlFlow
     public void patchInit(PatchContext ctx) {

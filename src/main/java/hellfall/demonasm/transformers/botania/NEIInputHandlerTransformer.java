@@ -1,12 +1,13 @@
-package hellfall.demonasm;
+package hellfall.demonasm.transformers.botania;
 
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.BookmarkPanel;
 import codechicken.nei.ItemPanel;
 import codechicken.nei.LayoutManager;
+import hellfall.demonasm.DAConfig;
+import hellfall.demonasm.transformers.DAMiniTransformer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
-import nilloader.api.lib.mini.MiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 import vazkii.botania.api.corporea.CorporeaHelper;
@@ -14,13 +15,13 @@ import vazkii.botania.api.corporea.CorporeaHelper;
 import java.awt.*;
 
 @Patch.Class("vazkii.botania.client.integration.nei.NEIInputHandler")
-public class NEIInputHandlerTransformer extends MiniTransformer {
+public class NEIInputHandlerTransformer extends DAMiniTransformer {
     @Patch.Method("keyTyped(Lnet/minecraft/client/gui/inventory/GuiContainer;CI)Z")
     public void patchKeyTyped(PatchContext ctx) {
         ctx.search(ICONST_4()).jumpAfter();
         ctx.search(ISTORE(8)).jumpBefore();
         ctx.add(
-                INVOKESTATIC("hellfall/demonasm/NEIInputHandlerTransformer$Hooks", "setBookmarkAmount", "(I)I")
+                INVOKESTATIC(hooks(), "setBookmarkAmount", "(I)I")
         );
     }
 

@@ -1,16 +1,18 @@
-package hellfall.demonasm;
+package hellfall.demonasm.transformers.forge;
 
 import cpw.mods.fml.client.GuiModList;
 import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.ModMetadata;
-import nilloader.api.lib.mini.MiniTransformer;
+import hellfall.demonasm.transformers.DAMiniTransformer;
+import hellfall.demonasm.DAPremain;
+import hellfall.demonasm.ForgeModListHacks;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 import java.util.Collections;
 
 @Patch.Class("cpw.mods.fml.client.GuiModList")
-public class GuiModListTransformer extends MiniTransformer {
+public class GuiModListTransformer extends DAMiniTransformer {
 
 	@Patch.Method("<init>(Lnet/minecraft/client/gui/GuiScreen;)V")
 	public void patchModAdders(PatchContext ctx) {
@@ -18,7 +20,7 @@ public class GuiModListTransformer extends MiniTransformer {
 
 		ctx.add(
 			ALOAD(0),
-			INVOKESTATIC("hellfall/demonasm/GuiModListTransformer$Hooks", "addNilmods", "(Lcpw/mods/fml/client/GuiModList;)V")
+			INVOKESTATIC(hooks(), "addNilmods", "(Lcpw/mods/fml/client/GuiModList;)V")
 		);
 	}
 

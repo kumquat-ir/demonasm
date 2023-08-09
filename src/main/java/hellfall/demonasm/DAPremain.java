@@ -1,5 +1,15 @@
 package hellfall.demonasm;
 
+import hellfall.demonasm.transformers.bloodmagic.SigilSeerTransformer;
+import hellfall.demonasm.transformers.botania.ModelSkullOverrideTransformer;
+import hellfall.demonasm.transformers.botania.NEIInputHandlerTransformer;
+import hellfall.demonasm.transformers.botania.RenderDopplegangerTransformer;
+import hellfall.demonasm.transformers.forge.GuiModListTransformer;
+import hellfall.demonasm.transformers.gt4.GT_OreDictHandlerTransformer;
+import hellfall.demonasm.transformers.iguanatweaks.IguanaSkullTransformer;
+import hellfall.demonasm.transformers.minecraft.TileEntitySkullRendererTransformer;
+import hellfall.demonasm.transformers.opencomputers.RobotRendererTransformer;
+import hellfall.demonasm.transformers.twilightforest.RenderTFGiantTransformer;
 import hellfall.zeroconfig.ZeroConfig;
 import nilloader.api.ClassTransformer;
 import nilloader.api.NilLogger;
@@ -28,6 +38,11 @@ public class DAPremain implements Runnable {
 			ClassTransformer.register(new RenderDopplegangerTransformer());
 			// twilight forest giants use player skin
 			ClassTransformer.register(new RenderTFGiantTransformer());
+		}
+
+		if (DAConfig.fixOcRobot) {
+			log.info("Fixing OC robot rendering");
+			ClassTransformer.register(new RobotRendererTransformer());
 		}
 
 		if (DAConfig.removeIguanaSkullContainer) {

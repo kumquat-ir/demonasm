@@ -36,6 +36,11 @@ public class DAConfig {
     @Config.Category("fixes")
     public static boolean fixHeadRendering = true;
 
+    @Config.Key("ocRobotRenderFix")
+    @Config.Comment("Fix OpenComputers robot rendering messing up the global render state in some situations")
+    @Config.Category("fixes")
+    public static boolean fixOcRobot = true;
+
     @Config.Key("greggy_greg_do_please_kindly_stuff_a_sock_in_it")
     @Config.Comment("Stop GT4 from yelling about Oredicts in the log")
     @Config.Category("shutup")

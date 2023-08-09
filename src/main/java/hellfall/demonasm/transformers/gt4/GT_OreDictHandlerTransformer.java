@@ -1,11 +1,11 @@
-package hellfall.demonasm;
+package hellfall.demonasm.transformers.gt4;
 
-import nilloader.api.lib.mini.MiniTransformer;
+import hellfall.demonasm.transformers.DAMiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("gregtechmod.common.GT_OreDictHandler")
-public class GT_OreDictHandlerTransformer extends MiniTransformer {
+public class GT_OreDictHandlerTransformer extends DAMiniTransformer {
     @SuppressWarnings("deprecation")
     @Patch.Method("registerOre(Lnet/minecraftforge/oredict/OreDictionary$OreRegisterEvent;)V")
     public void patchRegisterOre(PatchContext ctx) {

@@ -1,11 +1,11 @@
-package hellfall.demonasm;
+package hellfall.demonasm.transformers.minecraft;
 
-import nilloader.api.lib.mini.MiniTransformer;
+import hellfall.demonasm.transformers.DAMiniTransformer;
 import nilloader.api.lib.mini.PatchContext;
 import nilloader.api.lib.mini.annotation.Patch;
 
 @Patch.Class("net.minecraft.client.renderer.tileentity.TileEntitySkullRenderer")
-public class TileEntitySkullRendererTransformer extends MiniTransformer {
+public class TileEntitySkullRendererTransformer extends DAMiniTransformer {
 
 	@Patch.Method("func_152674_a(FFFIFILcom/mojang/authlib/GameProfile;)V")
 	public void patchRender(PatchContext ctx) {
