@@ -9,7 +9,7 @@ targetCompatibility = 8
 
 group = 'hellfall'
 archivesBaseName = 'demonasm'
-version = '1.0'
+version = '1.1'
 
 repositories {
 	maven {
@@ -55,6 +55,17 @@ repositories {
 			includeGroup "curse.maven"
 		}
 	}
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 	flatDir {
 		dirs 'mappings'
 		content {
@@ -92,10 +103,14 @@ dependencies {
 	mod('com.github.GTNewHorizons:OpenComputers:1.9.8-GTNH:dev') {
 		transitive = false
 	}
+	mod ('com.github.GTNewHorizons:Galacticraft:3.0.69-GTNH') {
+		transitive = false
+	}
 	mod 'com.github.GTNewHorizons:NotEnoughItems:2.3.54-GTNH:dev'
 	mod 'curse.maven:gregtech4-483827:4398634'
 	mod 'curse.maven:ruins-227873:2367311'
-
+	mod 'maven.modrinth:xaeros-minimap:21.10.38_Forge_1.7.10'
+	mod 'maven.modrinth:ears:1.4.5_01+forge-1.7'
 }
 
 mappings {

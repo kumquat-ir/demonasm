@@ -51,6 +51,11 @@ public class DAConfig {
     @Config.Category("shutup")
     public static boolean shutupRuins = true;
 
+    @Config.Key("noThermalPadding")
+    @Config.Comment("Makes Galacticraft Thermal Padding not render")
+    @Config.Category("drip")
+    public static boolean noThermalPadding = true;
+
     static {
         ZeroConfig.crossClassloader(DAConfig.class);
     }

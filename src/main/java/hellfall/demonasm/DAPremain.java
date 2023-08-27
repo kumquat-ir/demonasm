@@ -5,11 +5,13 @@ import hellfall.demonasm.transformers.botania.ModelSkullOverrideTransformer;
 import hellfall.demonasm.transformers.botania.NEIInputHandlerTransformer;
 import hellfall.demonasm.transformers.botania.RenderDopplegangerTransformer;
 import hellfall.demonasm.transformers.forge.GuiModListTransformer;
+import hellfall.demonasm.transformers.galacticraft.RenderPlayerGCTransformer;
 import hellfall.demonasm.transformers.gt4.GT_OreDictHandlerTransformer;
 import hellfall.demonasm.transformers.iguanatweaks.IguanaSkullTransformer;
 import hellfall.demonasm.transformers.minecraft.TileEntitySkullRendererTransformer;
 import hellfall.demonasm.transformers.opencomputers.RobotRendererTransformer;
 import hellfall.demonasm.transformers.twilightforest.RenderTFGiantTransformer;
+import hellfall.demonasm.transformers.xaerominimap.MinimapFBORendererTransformer;
 import hellfall.zeroconfig.ZeroConfig;
 import nilloader.api.ClassTransformer;
 import nilloader.api.NilLogger;
@@ -38,6 +40,8 @@ public class DAPremain implements Runnable {
 			ClassTransformer.register(new RenderDopplegangerTransformer());
 			// twilight forest giants use player skin
 			ClassTransformer.register(new RenderTFGiantTransformer());
+			// xaeros minimap player head rendering
+			ClassTransformer.register(new MinimapFBORendererTransformer());
 		}
 
 		if (DAConfig.fixOcRobot) {
@@ -68,6 +72,11 @@ public class DAPremain implements Runnable {
 		if (DAConfig.shutupRuins) {
 			log.info("Silencing Ruins creation spam");
 			//TODO
+		}
+
+		if (DAConfig.noThermalPadding) {
+			log.info("Thermal padding will not render. drip++");
+			ClassTransformer.register(new RenderPlayerGCTransformer());
 		}
 	}
 }
