@@ -103,9 +103,10 @@ dependencies {
 	mod('com.github.GTNewHorizons:OpenComputers:1.9.8-GTNH:dev') {
 		transitive = false
 	}
-	mod ('com.github.GTNewHorizons:Galacticraft:3.0.69-GTNH') {
+	mod ('com.github.GTNewHorizons:Galacticraft:3.0.69-GTNH:dev') {
 		transitive = false
 	}
+	mod ('com.github.GTNewHorizons:FTB-Utilities:1.1.0-GTNH:dev')
 	mod 'com.github.GTNewHorizons:NotEnoughItems:2.3.54-GTNH:dev'
 	mod 'curse.maven:gregtech4-483827:4398634'
 	mod 'curse.maven:ruins-227873:2367311'

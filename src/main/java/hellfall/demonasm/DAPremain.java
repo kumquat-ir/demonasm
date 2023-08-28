@@ -5,6 +5,7 @@ import hellfall.demonasm.transformers.botania.ModelSkullOverrideTransformer;
 import hellfall.demonasm.transformers.botania.NEIInputHandlerTransformer;
 import hellfall.demonasm.transformers.botania.RenderDopplegangerTransformer;
 import hellfall.demonasm.transformers.forge.GuiModListTransformer;
+import hellfall.demonasm.transformers.ftblib.GuiLMTransformer;
 import hellfall.demonasm.transformers.galacticraft.RenderPlayerGCTransformer;
 import hellfall.demonasm.transformers.gt4.GT_OreDictHandlerTransformer;
 import hellfall.demonasm.transformers.iguanatweaks.IguanaSkullTransformer;
@@ -33,6 +34,7 @@ public class DAPremain implements Runnable {
 
 		if (DAConfig.fixHeadRendering) {
 			log.info("Fixing player head rendering");
+			// vanilla player heads
 			ClassTransformer.register(new TileEntitySkullRendererTransformer());
 			// botania overrides the renderer, fix it
 			ClassTransformer.register(new ModelSkullOverrideTransformer());
@@ -42,6 +44,8 @@ public class DAPremain implements Runnable {
 			ClassTransformer.register(new RenderTFGiantTransformer());
 			// xaeros minimap player head rendering
 			ClassTransformer.register(new MinimapFBORendererTransformer());
+			// ftb utils friends gui head icon
+			ClassTransformer.register(new GuiLMTransformer());
 		}
 
 		if (DAConfig.fixOcRobot) {
