@@ -36,7 +36,7 @@ public class DAPremain implements Runnable {
 			log.info("Fixing player head rendering");
 			// vanilla player heads
 			ClassTransformer.register(new TileEntitySkullRendererTransformer());
-			// botania overrides the renderer, fix it
+			// botania overrides the renderer, fix it too
 			ClassTransformer.register(new ModelSkullOverrideTransformer());
 			// gaia guardian uses player skin
 			ClassTransformer.register(new RenderDopplegangerTransformer());
