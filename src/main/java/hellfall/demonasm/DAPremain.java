@@ -12,6 +12,7 @@ import hellfall.demonasm.transformers.iguanatweaks.IguanaSkullTransformer;
 import hellfall.demonasm.transformers.minecraft.TileEntitySkullRendererTransformer;
 import hellfall.demonasm.transformers.opencomputers.RobotRendererTransformer;
 import hellfall.demonasm.transformers.twilightforest.RenderTFGiantTransformer;
+import hellfall.demonasm.transformers.warptheory.RenderDoppelgangerTransformer;
 import hellfall.demonasm.transformers.xaerominimap.MinimapFBORendererTransformer;
 import hellfall.zeroconfig.ZeroConfig;
 import nilloader.api.ClassTransformer;
@@ -42,6 +43,8 @@ public class DAPremain implements Runnable {
 			ClassTransformer.register(new RenderDopplegangerTransformer());
 			// twilight forest giants use player skin
 			ClassTransformer.register(new RenderTFGiantTransformer());
+			// warp theory doppelganger uses player skin
+			ClassTransformer.register(new RenderDoppelgangerTransformer());
 			// xaeros minimap player head rendering
 			ClassTransformer.register(new MinimapFBORendererTransformer());
 			// ftb utils friends gui head icon

@@ -9,7 +9,7 @@ targetCompatibility = 8
 
 group = 'hellfall'
 archivesBaseName = 'demonasm'
-version = '1.2'
+version = '1.3'
 
 repositories {
 	maven {
@@ -107,6 +107,9 @@ dependencies {
 		transitive = false
 	}
 	mod ('com.github.GTNewHorizons:FTB-Utilities:1.1.0-GTNH:dev')
+	mod ('com.github.GTNewHorizons:WarpTheory:1.2.16-GTNH:dev') {
+		transitive = false
+	}
 	mod 'com.github.GTNewHorizons:NotEnoughItems:2.3.54-GTNH:dev'
 	mod 'curse.maven:gregtech4-483827:4398634'
 	mod 'curse.maven:ruins-227873:2367311'
